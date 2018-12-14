@@ -15,14 +15,14 @@ public class Token {
 
     public Token(){
         //默认构造函数
-//        basic_token = new BasicToken();
+        basic_token = new BasicToken();
         position = new Position(0, 0);
         clear(false);
 
     }
     public Token(Position pos){
         //输入位置进行构造
-//        basic_token = new BasicToken();
+        basic_token = new BasicToken();
         position = pos;
         clear(false);
     }
@@ -39,10 +39,10 @@ public class Token {
     }
     public void setBasic(BasicToken basic_token){this.basic_token = basic_token;}//设值基本记号信息
     public void setPosition(Position position){this.position = position;}//设值记号位置
-    public void setType(Scanner.ScannerConstant.TokenType type){basic_token.type = type;}//设值记号类型
+    public void setType(TokenType type){basic_token.type = type;}//设值记号类型
     public void setValue(double value){
         //设值记号值
-        if(basic_token.type == ScannerConstant.TokenType.CONST_ID)
+        if(basic_token.type == TokenType.CONST_ID)
             basic_token.value = value;
     }
     public void setText(String str){
@@ -66,10 +66,10 @@ public class Token {
         else
             basic_token.lexeme = String.format("\\X%02X", (char)c);
     }
-    public Scanner.ScannerConstant.TokenType getType(){return basic_token.type;}//获取记号类型
+    public TokenType getType(){return basic_token.type;}//获取记号类型
     public String getLexeme(){return basic_token.lexeme;}//获取记号文本
     public double getValue(){return basic_token.value;}//获取记号值
-    public Scanner.ScannerConstant.Func getFunc(){return basic_token.func;}//获取函数引用
+    public Func getFunc(){return basic_token.func;}//获取函数引用
     public boolean isEmpty(){return basic_token.lexeme.isEmpty();}//判断记号文本是否为空:空-true，不空-false
     public Position getPosition(){return position;}//获取记号位置
 }

@@ -7,7 +7,9 @@
 
 package Scanner;
 
-import java.io.*;
+import java.io.PushbackInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 //词法分析器类
@@ -68,7 +70,7 @@ public class Scanner {
             if (first_char == -1)//文件结束了
             {
                 theToken.setPosition(curr_pos);
-                theToken.setType(ScannerConstant.TokenType.NONTOKEN);
+                theToken.setType(TokenType.NONTOKEN);
                 return theToken;
             }
             where = curr_pos;
@@ -83,21 +85,20 @@ public class Scanner {
 //        theToken.setPosition(where);//修正记号位置
         return theToken;
     }
-    private char getChar(){
+    private int getChar(){
         //从输入源程序中读入一个字符
-        char result = (char)-1;
+        int result = -1;
         try{
             int next_char = in_file.read();
-            if(next_char == -1)
-                result = (char)-1;
-            else {
+            if(next_char != -1)
+            {
                 if(next_char == '\n'){
                     curr_pos.nextline();
-                    result = (String.valueOf(next_char)).charAt(0);
+                    result = next_char;
                 }
                 else {
                     curr_pos.addCol();
-                    result = (String.valueOf(next_char).toUpperCase()).charAt(0);
+                    result = Character.toUpperCase(next_char);
                 }
             }
         }
@@ -143,16 +144,16 @@ public class Scanner {
     private int postProcess(Token tok, int last_state){
         //后处理
         int to_be_continue = 0;
-        Scanner.ScannerConstant.TokenType tk = dfa.stateIsFinal(last_state);
+        TokenType tk = dfa.stateIsFinal(last_state);
         tok.setType(tk);
         switch (tk){
             case ID: //查符号表，进一步计算记号信息
             {
                 BasicToken id = JudgeKeyToken(tok.getLexeme());
                 if(id == null)
-                    tok.setType(ScannerConstant.TokenType.ERRTOKEN);
+                    tok.setType(TokenType.ERRTOKEN);
                 else
-                    tok.setType(ScannerConstant.TokenType.ID);
+                    tok.setType(TokenType.ID);
             }break;
             case CONST_ID: //转为数值
                 tok.setValue(Double.valueOf(tok.getLexeme())); break;
@@ -161,7 +162,7 @@ public class Scanner {
                 int c;
                 while(true) {
                     c = getChar();
-                    if(c == Integer.valueOf('\n') || c == -1)
+                    if(c == '\n' || c == -1)
                         break;
                 }
             }to_be_continue = 1; break;
@@ -175,7 +176,7 @@ public class Scanner {
         int curr_char = first_char;//当前字符
         curr_state = dfa.getStartState();
         while(true){
-            next_state = dfa.move(curr_state, curr_char);
+            next_state = dfa.move(curr_state, (char)curr_char);
             if(next_state < 0)//没有转移了
             {
                 //第一个字符就无效，则丢弃它 . 否则因为反复读到该字符而陷入死循环
@@ -207,26 +208,86 @@ public class Scanner {
 
         private BasicTokenCollection(){
             //默认构造函数
-            add(new BasicToken(ScannerConstant.TokenType.CONST_ID, "PI", 3.1415926, null));//π
-            add(new BasicToken(ScannerConstant.TokenType.CONST_ID, "E", 2.71828, null));//自然常数e
-            add(new BasicToken(ScannerConstant.TokenType.T, "T", 0.0, null));//参数
-            add(new BasicToken(ScannerConstant.TokenType.FUNC, "SIN", 0.0, ScannerConstant.Func.sin));//正弦函数
-            add(new BasicToken(ScannerConstant.TokenType.FUNC, "COS", 0.0, ScannerConstant.Func.cos));//余弦函数
-            add(new BasicToken(ScannerConstant.TokenType.FUNC, "TAN", 0.0, ScannerConstant.Func.tan));//正切函数
-            add(new BasicToken(ScannerConstant.TokenType.FUNC, "LN", 0.0, ScannerConstant.Func.log));//对数函数
-            add(new BasicToken(ScannerConstant.TokenType.FUNC, "EXP", 0.0, ScannerConstant.Func.exp));//指数函数
-            add(new BasicToken(ScannerConstant.TokenType.FUNC, "SQRT", 0.0, ScannerConstant.Func.sqrt));//开平方根函数
-            add(new BasicToken(ScannerConstant.TokenType.ORIGIN, "ORIGIN", 0.0, null));//保留关键字
-            add(new BasicToken(ScannerConstant.TokenType.SCALE, "SCALE", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.ROT, "ROT", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.IS, "IS", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.FOR, "FOR", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.FROM, "FROM", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.TO, "TO", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.STEP, "STEP", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.DRAW, "DRAW", 0.0, null));
-            add(new BasicToken(ScannerConstant.TokenType.COLOR, "COLOR", 0.0, null));
+            add(new BasicToken(TokenType.CONST_ID, "PI", 3.1415926, null));//π
+            add(new BasicToken(TokenType.CONST_ID, "E", 2.71828, null));//自然常数e
+            add(new BasicToken(TokenType.T, "T", 0.0, null));//参数
+            add(new BasicToken(TokenType.FUNC, "SIN", 0.0, Func.sin));//正弦函数
+            add(new BasicToken(TokenType.FUNC, "COS", 0.0, Func.cos));//余弦函数
+            add(new BasicToken(TokenType.FUNC, "TAN", 0.0, Func.tan));//正切函数
+            add(new BasicToken(TokenType.FUNC, "LN", 0.0, Func.log));//对数函数
+            add(new BasicToken(TokenType.FUNC, "EXP", 0.0, Func.exp));//指数函数
+            add(new BasicToken(TokenType.FUNC, "SQRT", 0.0, Func.sqrt));//开平方根函数
+            add(new BasicToken(TokenType.ORIGIN, "ORIGIN", 0.0, null));//保留关键字
+            add(new BasicToken(TokenType.SCALE, "SCALE", 0.0, null));
+            add(new BasicToken(TokenType.ROT, "ROT", 0.0, null));
+            add(new BasicToken(TokenType.IS, "IS", 0.0, null));
+            add(new BasicToken(TokenType.FOR, "FOR", 0.0, null));
+            add(new BasicToken(TokenType.FROM, "FROM", 0.0, null));
+            add(new BasicToken(TokenType.TO, "TO", 0.0, null));
+            add(new BasicToken(TokenType.STEP, "STEP", 0.0, null));
+            add(new BasicToken(TokenType.DRAW, "DRAW", 0.0, null));
+            add(new BasicToken(TokenType.COLOR, "COLOR", 0.0, null));
         }
         public BasicTokenCollection getTokenTab(){ return this; } //获取记号表
+    }
+    //有限状态自动机类
+    private static class DFA {
+
+        private DFA(){}//默认构造函数
+        private int getStartState(){return 0;}//获取DFA初态
+        private int move(int state_src, char c){
+            // 查询转移：在状态state_src下，遇到字符c的下一状态。若小于0，表示无转移
+            switch (state_src){
+                case 0:
+                    if(('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || c == '_') return 1;
+                    else if('0' <= c && c <= '9') return 2;
+                    else if(c == '*') return 4;
+                    else if(c == '/') return 6;
+                    else if(c == '-') return 7;
+                    else if(c == '+') return 8;
+                    else if(c == ',') return 9;
+                    else if(c == ';') return 10 ;
+                    else if(c == '(') return 11;
+                    else if(c == ')') return 12;
+                    break;
+                case 1:
+                    if(('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || c == '_') return 1; break;
+                case 2:
+                    if(c == '.') return 3;
+                    if('0' <= c && c <= '9' ) return 2;
+                    break;
+                case 3:
+                    if('0' <= c && c <= '9') return 3; break;
+                case 4:
+                    if(c == '*') return 5; break;
+                case 6:
+                    if(c == '/') return 13; break;
+                case 7:
+                    if(c == '-') return 13; break;
+            }
+            return -1;
+        }
+        private TokenType stateIsFinal(int state){
+            //判断指定状态是否为 DFA 的终态。若是则返回该终态对应的记号类别，否则返回ERRTOKEN.
+            switch (state){
+                case 1: return TokenType.ID;
+                case 2: case 3: return TokenType.CONST_ID;
+                case 4: return TokenType.MUL;
+                case 5: return TokenType.POWER;
+                case 6: return TokenType.DIV;
+                case 7: return TokenType.MINUS;
+                case 8: return TokenType.PLUS;
+                case 9: return TokenType.COMMA;
+                case 10: return TokenType.SEMICO;
+                case 11: return TokenType.L_BRACKET;
+                case 12: return TokenType.R_BRACKET;
+                case 13: return TokenType.COMMENT;
+                default: return TokenType.ERRTOKEN;
+            }
+        }
+        public static DFA getHardCodeDFA(){
+            //获得直接编码型DFA对象
+            return (new DFA());
+        }
     }
 }
