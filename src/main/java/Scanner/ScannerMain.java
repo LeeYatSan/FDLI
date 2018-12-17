@@ -12,7 +12,7 @@ public class ScannerMain {
 
     public static void main(String[] args){
 
-        String file_name = "F:\\Study\\JAVA\\Projects\\11 FDLI\\FDLI\\src\\ScannerTest.txt";
+        String file_name = "src/ScannerTest.txt";
         Scanner lexer = new Scanner();
         if(lexer.initScanner(file_name) == 0){
             System.out.println("Open Source File Error ! \n");
