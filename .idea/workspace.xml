@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d8813c9-0e1e-4387-a28a-24c0ca0f3b77" name="Default Changelist" comment="class errorLog &amp; UML Diagram v5">
-      <change afterPath="$PROJECT_DIR$/src/errors.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ErrorLog/ErrorLog.java" afterDir="false" />
+    <list default="true" id="7d8813c9-0e1e-4387-a28a-24c0ca0f3b77" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Function Drawing Language Interpreter （FDLI）.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Function Drawing Language Interpreter （FDLI）.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScannerTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScannerTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Scanner/ScannerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Scanner/ScannerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Scanner/ScannerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Scanner/ScannerMain.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,7 +16,7 @@
     <session id="1745633010">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
@@ -131,8 +124,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ErrorLog/ErrorLog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1265">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="415">
+              <caret line="46" column="47" lean-forward="true" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -247,7 +240,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://F:/Study/JAVA/Projects/11 FDLI/FDLI/src/main/java/Scanner/Scanner.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545036332839" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545036421638" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -299,7 +292,7 @@
       <workItem from="1544785289400" duration="254000" />
       <workItem from="1544785714049" duration="442000" />
       <workItem from="1544841968211" duration="337000" />
-      <workItem from="1545031958267" duration="4285000" />
+      <workItem from="1545031958267" duration="4447000" />
     </task>
     <task id="LOCAL-00001" summary="remain dfa">
       <created>1544708933903</created>
@@ -315,15 +308,28 @@
       <option name="project" value="LOCAL" />
       <updated>1544771998199</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="class errorLog &amp; UML Diagram v5">
+      <created>1545036319657</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1545036319657</updated>
+    </task>
+    <task id="LOCAL-00004" summary="class errorLog &amp; UML Diagram v5">
+      <created>1545036407642</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1545036407642</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36293000" />
+    <option name="totallyTimeSpent" value="36455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -332,15 +338,15 @@
       <window_info id="Image Layers" order="4" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.17627347" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="0" sideWeight="0.49932975" visible="true" weight="0.09261745" />
       <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" weight="0.32885906" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="2" sideWeight="0.50067025" side_tool="true" visible="true" weight="0.09261745" />
       <window_info anchor="bottom" id="Database Changes" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.32885906" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.35436243" />
-      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.19463088" />
+      <window_info anchor="bottom" id="Messages" order="8" weight="0.19463088" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" />
@@ -454,8 +460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ErrorLog/ErrorLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1265">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="33" />
+        <state relative-caret-position="415">
+          <caret line="46" column="47" lean-forward="true" selection-start-line="46" selection-start-column="47" selection-end-line="46" selection-end-column="47" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
