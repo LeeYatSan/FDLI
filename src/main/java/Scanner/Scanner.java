@@ -152,7 +152,7 @@ public class Scanner {
                 if(id == null)
                     tok.setType(TokenType.ERRTOKEN);
                 else
-                    tok.setType(id.type);
+                    tok.setBasic(id);
             }break;
             case CONST_ID: //转为数值
                 tok.setValue(Double.valueOf(tok.getLexeme())); break;

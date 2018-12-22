@@ -1,4 +1,5 @@
 package Parser;
+
 import ErrorLog.ErrorLog;
 import Scanner.*;
 // 1. 该分析器要为全部输入生成一个完整的语法树 .
@@ -29,7 +30,7 @@ public class Parser
     }
 
     protected AST_stmt_list ASTroot = null;       // 整个输入的抽象语法树
-    protected Tclass ptr_t_storage = new Tclass(0); // T 值的存放空间,是个指针(我这算是引用了)
+    protected Tclass ptr_t_storage = null; // T 值的存放空间,是个指针(我这算是引用了)
     protected Tclass parameter = new Tclass(0);   // 每次将计算出来的变量存入T，然后循环
     protected Token curr_token;   // 当前记号
     protected Token lastToken; 	 // 当前记号之前，最后一个正确的记号
@@ -125,7 +126,7 @@ public class Parser
         return;
     }
     @SuppressWarnings("incomplete-switch")
-    private AST_expression MakeExprNode(Token p_rt,AST_expression ... args)   // 为表达式构造语法树
+    private AST_expression MakeExprNode(Token p_rt, AST_expression... args)   // 为表达式构造语法树
     {
         AST_expression root = null;
         Token rt = p_rt;
@@ -250,7 +251,7 @@ public class Parser
         AST_statement root = new AST_statement( lastToken );  // 生成 ROT 语句的语法树根
 
         MatchToken(TokenType.IS);
-        AST  ptr  = expression();
+        AST ptr  = expression();
         root.addExpression (ptr);
         tree_trace(ptr);   // print AST
         back("rot_statement");
@@ -418,7 +419,7 @@ public class Parser
         ptr_t_storage = parameter;
         //	parameter = 0;
         //	ptr_t_storage.parameter = parameter;  //实际是把空间传给了指针，每次parameter改变ptr就会变
-
+        ErrorLog.open();
         ErrorLog.printLog("Analyse file:[" + theScanner.file_name + "]...\n");
     }
     //~Parser();  //不用实现
@@ -434,6 +435,7 @@ public class Parser
 
     public AST_stmt_list run() 	// 语法分析的入口操作。返回为整个输入构造的语法树（语句列表）
     {
+
         FetchToken(); // 获取第一个记号
         program(); // 递归下降分析
 

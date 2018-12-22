@@ -6,18 +6,14 @@ enter in program
       matchtoken IS
       matchtoken (
       enter in expression
-        matchtoken 100
+        matchtoken 20
       exit from expression
-      100
+      20
       matchtoken ,
       enter in expression
-        matchtoken 300
-        matchtoken +
-        matchtoken 1
+        matchtoken 200
       exit from expression
-      +
-        300
-        1
+      200
       matchtoken )
     exit from origin_statement
   exit from statement
@@ -39,14 +35,14 @@ enter in program
       matchtoken IS
       matchtoken (
       enter in expression
-        matchtoken 1
+        matchtoken 40
       exit from expression
-      1
+      40
       matchtoken ,
       enter in expression
-        matchtoken 1
+        matchtoken 40
       exit from expression
-      1
+      40
       matchtoken )
     exit from scale_statement
   exit from statement
@@ -62,14 +58,30 @@ enter in program
       0
       matchtoken TO
       enter in expression
-        matchtoken 200
+        matchtoken 2
+        matchtoken *
+        matchtoken PI
+        matchtoken +
+        matchtoken PI
+        matchtoken /
+        matchtoken 50
       exit from expression
-      200
+      +
+        *
+          2
+          PI
+        /
+          PI
+          50
       matchtoken STEP
       enter in expression
-        matchtoken 1
+        matchtoken PI
+        matchtoken /
+        matchtoken 50
       exit from expression
-      1
+      /
+        PI
+        50
       matchtoken DRAW
       matchtoken (
       enter in expression
@@ -78,82 +90,14 @@ enter in program
       T
       matchtoken ,
       enter in expression
-        matchtoken 0
+        matchtoken SIN
+        matchtoken (
+        enter in expression
+          matchtoken T
+        exit from expression
+        matchtoken )
       exit from expression
-      0
-      matchtoken )
-    exit from for_statement
-  exit from statement
-  matchtoken ;
-  enter in statement
-    enter in for_statement
-      matchtoken FOR
-      matchtoken T
-      matchtoken FROM
-      enter in expression
-        matchtoken 0
-      exit from expression
-      0
-      matchtoken TO
-      enter in expression
-        matchtoken 150
-      exit from expression
-      150
-      matchtoken STEP
-      enter in expression
-        matchtoken 1
-      exit from expression
-      1
-      matchtoken DRAW
-      matchtoken (
-      enter in expression
-        matchtoken 0
-      exit from expression
-      0
-      matchtoken ,
-      enter in expression
-        matchtoken -
-        matchtoken T
-      exit from expression
-      -
-        0
-        T
-      matchtoken )
-    exit from for_statement
-  exit from statement
-  matchtoken ;
-  enter in statement
-    enter in for_statement
-      matchtoken FOR
-      matchtoken T
-      matchtoken FROM
-      enter in expression
-        matchtoken 0
-      exit from expression
-      0
-      matchtoken TO
-      enter in expression
-        matchtoken 120
-      exit from expression
-      120
-      matchtoken STEP
-      enter in expression
-        matchtoken 1
-      exit from expression
-      1
-      matchtoken DRAW
-      matchtoken (
-      enter in expression
-        matchtoken T
-      exit from expression
-      T
-      matchtoken ,
-      enter in expression
-        matchtoken -
-        matchtoken T
-      exit from expression
-      -
-        0
+      SIN
         T
       matchtoken )
     exit from for_statement
@@ -162,34 +106,25 @@ enter in program
 exit from program
 src\ScannerTest.txt
   ORIGIN
-    100
-    +
-      300
-      1
+    20
+    200
   ROT
     0
   SCALE
-    1
-    1
+    40
+    40
   FOR
     0
-    200
-    1
+    +
+      *
+        2
+        PI
+      /
+        PI
+        50
+    /
+      PI
+      50
     T
-    0
-  FOR
-    0
-    150
-    1
-    0
-    -
-      0
-      T
-  FOR
-    0
-    120
-    1
-    T
-    -
-      0
+    SIN
       T

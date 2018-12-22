@@ -27,7 +27,7 @@ public class ParserMain {
     public static void main(String[] args)
     {
         ParserMain test = new ParserMain();
-        test.doParse("src\\ScannerTest.txt");
+        test.doParse("ScannerTest.txt");
     }
 
 }
