@@ -37,7 +37,7 @@ public class WinGUI extends JFrame
     private JPanel panel;
     private JButton btnRe;
     private TColor co = new TColor(0,0,0);
-    SemanticAnalyzer sa = new SemanticAnalyzer(this);
+    public SemanticAnalyzer sa = new SemanticAnalyzer(this);
 
 
 
@@ -230,17 +230,5 @@ public class WinGUI extends JFrame
             }
         });
 
-    }
-
-
-
-    public static void main(String[] args)
-    {
-        //ErrLog.restart(true);
-        WinGUI wg = new WinGUI();
-        wg.sa.theParser.run();
-        wg.sa.run();
-        wg.setVisible(true);
-        //ErrLog.restart(false);
     }
 }
