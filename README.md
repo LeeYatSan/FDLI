@@ -1,12 +1,23 @@
-﻿# FDLI
+# FDLI
 Function Drawing Language Interpreter （FDLI）
 
 ## UML CLASS DIAGRAM
 [LINK](https://www.lucidchart.com/invitations/accept/c7075955-0e29-45f5-a0da-cc2f675324a1)
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Function%20Drawing%20Language%20Interpreter%20%EF%BC%88FDLI%EF%BC%89.svg)
+### UML - Packages
+![image](https://github.com/LeeYatSan/FDLI/blob/master/Top-Level%20Package.png)
+### UML - Scanner
+![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20Scanner.png)
+### UML - Parser
+![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20Parser.png)
+### UML - Semantic Analyzer
+![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20Semantics.png)
+### UML - Error
+![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20ErrorLog.png)
+### UML - GUI
+![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20UI_main.png)
 
-##Result
-![image]()
+## Result
+![image](https://github.com/LeeYatSan/FDLI/blob/master/srceenshot1.jpg)
 ### Input File
 ```
 --------------- 函数f(t)=t的图形
