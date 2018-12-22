@@ -49,7 +49,7 @@ abstract public class AST
             itr.next().print(ident + 2);
     }
 
-    public Token token(){return mToken;}; // 获得结点中的记号
+    public Token token(){return mToken;}// 获得结点中的记号
     public TokenType kind() {return mToken.getType();}
 
 }

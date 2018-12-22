@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class Scanner {
 
-    protected PushbackInputStream in_file;//输入文件流
-    protected DFA dfa;//有限状态自动机
-    protected Position curr_pos;//当前文件位置（行号，列号）
+    private PushbackInputStream in_file;//输入文件流
+    private DFA dfa;//有限状态自动机
+    private Position curr_pos;//当前文件位置（行号，列号）
     public String file_name;//文件名
     private BasicTokenCollection token_tab = new BasicTokenCollection();
 

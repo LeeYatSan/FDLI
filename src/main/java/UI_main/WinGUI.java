@@ -65,7 +65,7 @@ public class WinGUI extends JFrame
             FileReader fr = new FileReader("src\\ScannerTest.txt");
             java.util.Scanner input=new java.util.Scanner(fr);
             String informationInFile;
-            while(input.hasNext() == true)
+            while(input.hasNext())
             {
                 informationInFile = input.nextLine();
                 textArea.append(informationInFile + "\r\n");
@@ -102,7 +102,7 @@ public class WinGUI extends JFrame
 
 
 
-    void initCopmonents()
+    private void initCopmonents()
     {
         setTitle("函数绘图语言GUI");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,8 +125,8 @@ public class WinGUI extends JFrame
             public void paint(Graphics g)
             {
                 super.paint(g);  //调用父类的paint方法
-                collection c = null;
-                for(int i = 0 ; i < drawInfo.size() ;i++)//
+                collection c;
+                for(int i = 0 ; i < drawInfo.size() ;i++)
                 {
                     c = drawInfo.get(i);
                     g.setColor(new Color(co.red,co.green,co.blue));
@@ -176,7 +176,7 @@ public class WinGUI extends JFrame
 
 
 
-    void createEvents()
+    private void createEvents()
     {
         btnRe.addActionListener(new ActionListener() {    //点击Go之后的操作
             public void actionPerformed(ActionEvent e)
