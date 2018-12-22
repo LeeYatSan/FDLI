@@ -12,12 +12,12 @@ import java.io.*;
 //错误日志类
 public class ErrorLog {
 
-    final private File errorFile = new File("src/errors.txt");
-    final private File logFile = new File("src/logs.txt");
-    private BufferedWriter ef_out = null;//错误文件写入流
-    private BufferedWriter lf_out = null;//日志文件写入流
+    final private static File errorFile = new File("src/errors.txt");
+    final private static File logFile = new File("src/logs.txt");
+    private static BufferedWriter ef_out = null;//错误文件写入流
+    private static BufferedWriter lf_out = null;//日志文件写入流
 
-    public void open(){
+    public static void open(){
         //开启写入流
         try
         {
@@ -30,16 +30,19 @@ public class ErrorLog {
             System.out.println(e.getMessage());
         }
     }
-    public void close(){
+    public static void close(){
         //开启写入流
         try
         {
             //关闭错误文件写入流
-            ef_out.flush();
-            ef_out.close();
-            //关闭日志文件写入流
-            lf_out.flush();
-            lf_out.close();
+            if(ef_out != null)
+            {
+                ef_out.flush();
+                ef_out.close();
+                //关闭日志文件写入流
+                lf_out.flush();
+                lf_out.close();
+            }
         }
         catch (IOException e)
         {
@@ -47,17 +50,18 @@ public class ErrorLog {
             System.out.println(e.getMessage());
         }
     }
-    public void restart(boolean open_it){
+    public static void restart(boolean open_it){
         //重启写入流
-        this.close();
+        close();
         if(open_it)
-            this.open();
+            open();
     }
-    public void errorMessage(String msg){
+    public static void errorMessage(String msg){
         //错误信息
         try
         {
             ef_out.write(msg);
+            ef_out.flush();
 //            showMessage(msg);UI预留
         }
         catch (IOException e)
@@ -66,7 +70,7 @@ public class ErrorLog {
             System.out.println(e.getMessage());
         }
     }
-    public void errorMessage(int row, String description, String msg){
+    public static void errorMessage(int row, String description, String msg){
         //错误信息
         String info = String.format("Error at line %d: %s %s\n", row, description ,msg);
         try
@@ -80,12 +84,13 @@ public class ErrorLog {
             System.out.println(e.getMessage());
         }
     }
-    public void errorMessage(int row, int col, String description, String msg){
+    public static void errorMessage(int row, int col, String description, String msg){
         //错误信息
         String info = String.format("Error at [%d, %d]: %s %s\n", row, col, description ,msg);
         try
         {
             ef_out.write(info);
+            ef_out.flush();
             errorMessage(info);
         }
         catch (IOException e)
@@ -94,12 +99,16 @@ public class ErrorLog {
             System.out.println(e.getMessage());
         }
     }
-    public void printLog(String ... msg){
+    public static void printLog(String ... msg){
         //打印日志信息
         try
         {
             for(String temp : msg)
+            {
                 lf_out.write(temp);
+                lf_out.flush();
+            }
+
         }
         catch (IOException e)
         {

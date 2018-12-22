@@ -12,13 +12,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-//词法分析器类
 public class Scanner {
 
     protected PushbackInputStream in_file;//输入文件流
     protected DFA dfa;//有限状态自动机
     protected Position curr_pos;//当前文件位置（行号，列号）
-    protected String file_name;//文件名
+    public String file_name;//文件名
     private BasicTokenCollection token_tab = new BasicTokenCollection();
 
     public Scanner(){
@@ -205,7 +204,7 @@ public class Scanner {
     }
     //内部静态类：记号表类
     public static class BasicTokenCollection extends ArrayList<BasicToken> {
-
+        private static final long serialVersionUID = -7474649357028667723L;
         private BasicTokenCollection(){
             //默认构造函数
             add(new BasicToken(TokenType.CONST_ID, "PI", 3.1415926, null));//π
@@ -285,6 +284,7 @@ public class Scanner {
                 default: return TokenType.ERRTOKEN;
             }
         }
+        @SuppressWarnings("unused")
         public static DFA getHardCodeDFA(){
             //获得直接编码型DFA对象
             return (new DFA());
