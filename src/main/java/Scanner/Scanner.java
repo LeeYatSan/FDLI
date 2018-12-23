@@ -85,7 +85,7 @@ public class Scanner {
         return theToken;
     }
     private int getChar(){
-        //从输入源程序中读入一个字符
+        //从输入源文件中读入一个字符
         int result = -1;
         try{
             int next_char = in_file.read();

@@ -58,47 +58,25 @@ enter in program
       0
       matchtoken TO
       enter in expression
-        matchtoken 2
-        matchtoken *
-        matchtoken PI
-        matchtoken +
-        matchtoken PI
-        matchtoken /
-        matchtoken 50
+        matchtoken 150
       exit from expression
-      +
-        *
-          2
-          PI
-        /
-          PI
-          50
+      150
       matchtoken STEP
       enter in expression
-        matchtoken PI
-        matchtoken /
-        matchtoken 50
+        matchtoken 1
       exit from expression
-      /
-        PI
-        50
+      1
       matchtoken DRAW
       matchtoken (
+      enter in expression
+        matchtoken 0
+      exit from expression
+      0
+      matchtoken ,
       enter in expression
         matchtoken T
       exit from expression
       T
-      matchtoken ,
-      enter in expression
-        matchtoken SIN
-        matchtoken (
-        enter in expression
-          matchtoken T
-        exit from expression
-        matchtoken )
-      exit from expression
-      SIN
-        T
       matchtoken )
     exit from for_statement
   exit from statement
@@ -115,16 +93,7 @@ src\ScannerTest.txt
     40
   FOR
     0
-    +
-      *
-        2
-        PI
-      /
-        PI
-        50
-    /
-      PI
-      50
+    150
+    1
+    0
     T
-    SIN
-      T

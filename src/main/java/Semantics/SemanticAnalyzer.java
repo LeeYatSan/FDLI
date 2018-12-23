@@ -97,12 +97,13 @@ public class SemanticAnalyzer
     public SemanticAnalyzer(WinGUI wg)
     {
         this.wg = wg;
+        myT_storage = 0;
         theScanner = new Scanner();
         theScanner.initScanner("src\\ScannerTest.txt");
         theParser = new Parser(theScanner);
         theProgram = theParser.getStmts();
         theParser.setTmemory(myT_storage);
-        myT_storage = 0;
+
 
         Color.setValue(255, 0, 0);	// default color is RED
         Origin_x = 0; Origin_y = 0;
@@ -117,7 +118,7 @@ public class SemanticAnalyzer
             return -1;
 
         AST_statement stmt = null;
-        Zorro();
+        //Zorro();//假核心???
         int n_stmt = theProgram.children_count();
         for(int i = 0; i < n_stmt; ++i)
         {
@@ -168,8 +169,8 @@ public class SemanticAnalyzer
             return theParser.getFilename();
     }
 
-    // *** 核心
-    private void Zorro()
+    // ???假核心???
+   /* private void Zorro()
     {
         AST_stmt_list stmts = theProgram;
         if(null == stmts)
@@ -219,7 +220,7 @@ public class SemanticAnalyzer
         AST r = new AST_T(tk, referTemp);
         tk.setType(TokenType.MINUS); 	stmt.addExpression(new AST_minus(tk, l, r));
         stmts.addStmt(stmt, 0);
-    }
+    }*/
 }
 
 
