@@ -4,20 +4,20 @@ Function Drawing Language Interpreter （FDLI）
 ## UML CLASS DIAGRAM
 [LINK](https://www.lucidchart.com/invitations/accept/c7075955-0e29-45f5-a0da-cc2f675324a1)
 ### UML - Packages
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Top-Level%20Package.png)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/UML/svg/Top-Level%20Package.svg)
 ### UML - Scanner
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20Scanner.png)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/UML/svg/Package%20Scanner.svg)
 ### UML - Parser
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20Parser.png)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/UML/svg/Package%20Parser.svg)
 ### UML - Semantic Analyzer
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20Semantics.png)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/UML/svg/Package%20Semantics.svg)
 ### UML - Error
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20ErrorLog.png)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/UML/svg/Package%20ErrorLog.svg)
 ### UML - GUI
-![image](https://github.com/LeeYatSan/FDLI/blob/master/Package%20UI_main.png)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/UML/svg/Package%20UI_main.svg)
 
 ## Result
-![image](https://github.com/LeeYatSan/FDLI/blob/master/srceenshot1.jpg)
+![image](https://github.com/LeeYatSan/FDLI/blob/master/image/srceenshot1.jpg)
 ### Input File
 ```
 --------------- 函数f(t)=t的图形
